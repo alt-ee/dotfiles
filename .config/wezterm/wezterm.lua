@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm';
 return{
-    font = wezterm.font("Iosevka Comfy"),
+    font = wezterm.font("Iosevka"),
     color_scheme = "Gruvbox Dark",
 
     font_size = 15,
