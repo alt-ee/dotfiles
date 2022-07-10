@@ -3,3 +3,6 @@
 # Please adapt and uncomment the following lines:
 	name = Alex
 	email = 59831659+alt-ee@users.noreply.github.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
