@@ -1,10 +1,10 @@
-;;; example-config.el -- Example Rational Emacs user customization file -*- lexical-binding: t; -*-
+;;; example-config.el -- Example Crafted Emacs user customization file -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;
-;; Rational Emacs supports user customization through a `config.el' file
+;; Crafted Emacs supports user customization through a `config.el' file
 ;; similar to this one.  You can copy this file as `config.el' to your
-;; Rational Emacs configuration directory as an example.
+;; Crafted Emacs configuration directory as an example.
 ;;
 ;; In your configuration you can set any Emacs configuration variable, face
 ;; attributes, themes, etc as you normally would.
@@ -24,24 +24,29 @@
 ;;; Code:
 ;; Modules:
 
-(require 'rational-defaults)  
-(require 'rational-ui)        
-(require 'rational-evil)      
-(require 'rational-ide)
-(require 'rational-python)
-(require 'rational-completion)
+(require 'crafted-defaults)  
+(require 'crafted-ui)        
+(require 'crafted-evil)      
+(require 'crafted-ide)
+(require 'crafted-python)
+(require 'crafted-completion)
+(require 'crafted-updates)
 
 ;; Set further font and theme customizations
 (custom-set-variables
-   '(rational-ui-default-font
-     '(:font "Iosevka Comfy" :weight normal :height 150)))
+   '(crafted-ui-default-font
+     '(:font "Iosevka" :weight normal :height 150)))
 
-(rational-package-install-package 'doom-themes)
+(crafted-package-install-package 'doom-themes)
 (load-theme 'doom-gruvbox t)
 
-(rational-package-install-package 'evil-escape)
+(crafted-package-install-package 'evil-escape)
 (evil-escape-mode)
 (setq-default evil-escape-key-sequence "kj")
 
+(crafted-package-install-package 'nov)
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
 ;; To not load `custom.el' after `config.el', uncomment this line.
-;; (setq rational-load-custom-file nil)
+;; (setq crafted-load-custom-file nil)
+;; 
