@@ -17,7 +17,7 @@
 ;;
 ;; Help functions, C-h followed by a key
 ;; k: tell me what function is bound to a key
-;; w: tell me what key(s) a function is bound to
+;; w: tell me what key(s) a function is bound to (not really necessary with vertico stack)
 ;; f: tell me what a function does
 ;; v: tell me what a variable does
 
@@ -39,6 +39,8 @@
 
 (crafted-package-install-package 'doom-themes)
 (load-theme 'doom-gruvbox t)
+
+(setq-default ring-bell-function 'ignore)
 
 (crafted-package-install-package 'evil-escape)
 (evil-escape-mode)
