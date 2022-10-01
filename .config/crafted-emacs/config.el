@@ -32,11 +32,6 @@
 (require 'crafted-completion)
 (require 'crafted-updates)
 
-;; Set further font and theme customizations
-(custom-set-variables
-   '(crafted-ui-default-font
-     '(:font "Iosevka" :weight normal :height 150)))
-
 (crafted-package-install-package 'doom-themes)
 (load-theme 'doom-gruvbox t)
 
@@ -48,5 +43,5 @@
 (crafted-package-install-package 'magit)
 
 ;; To not load `custom.el' after `config.el', uncomment this line.
-;; (setq crafted-load-custom-file nil)
-;; 
+(setq crafted-load-custom-file nil)
+
