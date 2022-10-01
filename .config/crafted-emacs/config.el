@@ -45,6 +45,8 @@
 (crafted-package-install-package 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
+(crafted-package-install-package 'magit)
+
 ;; To not load `custom.el' after `config.el', uncomment this line.
 ;; (setq crafted-load-custom-file nil)
 ;; 
