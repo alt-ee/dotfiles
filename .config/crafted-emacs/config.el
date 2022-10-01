@@ -42,10 +42,6 @@
 
 (setq-default ring-bell-function 'ignore)
 
-(crafted-package-install-package 'evil-escape)
-(evil-escape-mode)
-(setq-default evil-escape-key-sequence "kj")
-
 (crafted-package-install-package 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
