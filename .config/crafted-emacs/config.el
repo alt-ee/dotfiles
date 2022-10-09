@@ -31,6 +31,7 @@
 (require 'crafted-python)
 (require 'crafted-completion)
 (require 'crafted-updates)
+(require 'crafted-c)
 
 (crafted-package-install-package 'doom-themes)
 (load-theme 'doom-gruvbox t)
