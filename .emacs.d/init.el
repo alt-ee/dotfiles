@@ -45,6 +45,8 @@
 ;; Reduce screen clutter
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+;; Shut up
+(setq-default ring-bell-function 'ignore)
 
 ;; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
