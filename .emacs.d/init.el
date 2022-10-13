@@ -45,6 +45,14 @@
 ;; Reduce screen clutter
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+
+;; Reduce file clutter
+(setq auto-save-file-name-transforms
+          `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+
 ;; Shut up
 (setq-default ring-bell-function 'ignore)
 
