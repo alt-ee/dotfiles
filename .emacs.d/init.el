@@ -1,4 +1,9 @@
-;; Install straight.el  -*- lexical-binding: t; -*-
+;; emacs config -*- lexical-binding: t; -*-
+
+(add-to-list 'load-path (concat user-emacs-directory
+        (convert-standard-filename "lisp/")))
+
+;; Install straight.el  
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -18,9 +23,11 @@
 (use-package straight
   :custom (straight-use-package-by-default t))
 
-(use-package evil
-  :init (setq evil-want-C-i-jump nil)
-  :config (evil-mode))
+(use-package meow
+  :config
+  (require 'meow-config)
+  (meow-setup)
+  (meow-global-mode 1))
 
 (use-package vertico
   :init (vertico-mode))
