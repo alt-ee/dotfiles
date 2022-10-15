@@ -17,9 +17,9 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Install use-package, and configure it to always use straight
+;; Install use-package
 (straight-use-package 'use-package)
-
+;; And configure it to always use straight
 (use-package straight
   :custom (straight-use-package-by-default t))
 
@@ -30,7 +30,29 @@
   (meow-global-mode 1))
 
 (use-package vertico
-  :init (vertico-mode))
+  :straight (:files (:defaults "extensions/*"))
+  :init (vertico-mode)
+  :bind (:map vertico-map
+	      ("C-j" . vertico-next)
+	      ("C-k" . vertico-previous)))
+			 
+(use-package vertico-directory
+  :after vertico
+  :straight nil
+  :bind (:map vertico-map
+	      ("M-h" . vertico-directory-delete-word)))
+
+(use-package savehist
+  :init
+  (savehist-mode))
+
+(use-package consult
+  :bind (("C-x C-b" . consult-buffer)
+	 ("C-x C-f" . consult-)))
+
+(use-package marginalia
+  :init
+  (marginalia-mode))
 
 (use-package orderless
   :after vertico
@@ -38,6 +60,9 @@
   (setq completion-styles '(orderless basic)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
+
+(use-package corfu
+  :init (global-corfu-mode))
 
 (use-package nano-theme
   :straight (:host github
@@ -49,6 +74,10 @@
 (use-package eglot)
 
 (use-package magit)
+
+;; Save recent files
+(recentf-mode 1)
+(setq recentf-max-saved-items 25)
 
 ;; Comp warnings on startup are annoying
 (setq native-comp-async-report-warnings-errors 'silent)
