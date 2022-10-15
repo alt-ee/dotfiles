@@ -47,6 +47,9 @@
   (load-theme 'nano-dark t))
 
 (use-package eglot)
+
+(use-package magit)
+
 ;; Comp warnings on startup are annoying
 (setq native-comp-async-report-warnings-errors 'silent)
 
