@@ -55,13 +55,14 @@
 
 ;; Reduce file clutter
 (setq auto-save-file-name-transforms
-          `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+      `((".*" "~/.emacs.d/auto-save/" t)))
 (setq backup-directory-alist
       `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups")))))
+                 (concat user-emacs-directory "backups/")))))
 
 ;; Shut up
 (setq-default ring-bell-function 'ignore)
 
 ;; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
