@@ -46,6 +46,7 @@
   (setq nano-fonts-use t)
   (load-theme 'nano-dark t))
 
+(use-package eglot)
 ;; Comp warnings on startup are annoying
 (setq native-comp-async-report-warnings-errors 'silent)
 
