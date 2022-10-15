@@ -47,8 +47,7 @@
   (savehist-mode))
 
 (use-package consult
-  :bind (("C-x C-b" . consult-buffer)
-	 ("C-x C-f" . consult-)))
+  :bind (("C-x C-b" . consult-buffer)))
 
 (use-package marginalia
   :init
