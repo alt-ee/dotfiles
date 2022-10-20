@@ -61,7 +61,13 @@
         completion-category-overrides '((file (styles partial-completion)))))
 
 (use-package corfu
-  :init (global-corfu-mode))
+  :init (global-corfu-mode)
+  :config
+  (setq corfu-cycle t
+	corfu-auto t)
+  :bind (:map corfu-map
+	      ("C-j" . corfu-next)
+	      ("C-k" . corfu-previous)))
 
 (use-package nano-theme
   :straight (:host github
@@ -70,7 +76,10 @@
   (setq nano-fonts-use t)
   (load-theme 'nano-dark t))
 
-(use-package eglot)
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
+  (add-hook 'python-mode-hook 'eglot-ensure))
 
 (use-package magit)
 
