@@ -83,6 +83,12 @@
 
 (use-package magit)
 
+(use-package gdscript-mode
+    :straight (gdscript-mode
+               :type git
+               :host github
+               :repo "godotengine/emacs-gdscript-mode"))
+
 ;; Save recent files
 (recentf-mode 1)
 (setq recentf-max-saved-items 25)
