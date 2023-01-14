@@ -69,12 +69,14 @@
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
 
-(use-package nano-theme
   :straight (:host github
-	     :repo "rougier/nano-theme")
   :config
-  (setq nano-fonts-use t)
-  (load-theme 'nano-dark t))
+;; (use-package nano-theme
+;;   :straight (:host github
+;; 	     :repo "rougier/nano-theme")
+;;   :config
+;;   (setq nano-fonts-use t)
+;;   (load-theme 'nano-dark t))
 
 (use-package eglot
   :config
