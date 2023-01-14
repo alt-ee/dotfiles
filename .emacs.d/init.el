@@ -69,8 +69,13 @@
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
 
+(use-package beancount
   :straight (:host github
+	   :repo "beancount/beancount-mode")
   :config
+  (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode)))
+;; TODO create a custom keybind to show balances
+
 ;; (use-package nano-theme
 ;;   :straight (:host github
 ;; 	     :repo "rougier/nano-theme")
