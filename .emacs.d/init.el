@@ -114,6 +114,9 @@
 ;; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Reload files changed outside emacs
+(global-auto-revert-mode 1)
+
 ;; Org config
 (setq org-agenda-files
       '("inbox.org" "nextActions.org" "projects.org"))
