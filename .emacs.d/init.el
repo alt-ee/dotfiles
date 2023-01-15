@@ -114,3 +114,10 @@
 ;; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
+;; Org config
+(setq org-agenda-files
+      '("inbox.org" "nextActions.org" "projects.org"))
+
+(setq org-refile-targets
+      '((nil :maxlevel . 3)
+        (org-agenda-files :maxlevel . 3)))
