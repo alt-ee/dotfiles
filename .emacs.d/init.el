@@ -74,11 +74,17 @@
 	   :repo "beancount/beancount-mode")
   :config
   (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode)))
+
 ;; TODO create a custom keybind to show balances
 
 (use-package mindre-theme
   :config
   (load-theme 'mindre t))
+
+(custom-set-faces
+ '(default ((t (:family "Iosevka"
+		:weight semi-light
+		:height 125)))))
 
 (use-package eglot
   :config
@@ -121,3 +127,4 @@
 (setq org-refile-targets
       '((nil :maxlevel . 3)
         (org-agenda-files :maxlevel . 3)))
+
