@@ -76,12 +76,9 @@
   (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode)))
 ;; TODO create a custom keybind to show balances
 
-;; (use-package nano-theme
-;;   :straight (:host github
-;; 	     :repo "rougier/nano-theme")
-;;   :config
-;;   (setq nano-fonts-use t)
-;;   (load-theme 'nano-dark t))
+(use-package mindre-theme
+  :config
+  (load-theme 'mindre t))
 
 (use-package eglot
   :config
