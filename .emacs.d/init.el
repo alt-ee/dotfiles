@@ -27,7 +27,9 @@
   :config
   (require 'meow-config)
   (meow-setup)
-  (meow-global-mode 1))
+  (meow-global-mode 1)
+  :bind (:map meow-insert-state-keymap
+	      ("C-g" . meow-insert-exit)))
 
 (use-package vertico
   :straight (:files (:defaults "extensions/*"))
