@@ -27,7 +27,9 @@
   :config
   (require 'meow-config)
   (meow-setup)
-  (meow-global-mode 1))
+  (meow-global-mode 1)
+  :bind (:map meow-insert-state-keymap
+	      ("C-g" . meow-insert-exit)))
 
 (use-package vertico
   :straight (:files (:defaults "extensions/*"))
@@ -69,12 +71,22 @@
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
 
-(use-package nano-theme
+(use-package beancount
   :straight (:host github
-	     :repo "rougier/nano-theme")
+	   :repo "beancount/beancount-mode")
   :config
-  (setq nano-fonts-use t)
-  (load-theme 'nano-dark t))
+  (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode)))
+
+;; TODO create a custom keybind to show balances
+
+(use-package mindre-theme
+  :config
+  (load-theme 'mindre t))
+
+(custom-set-faces
+ '(default ((t (:family "Iosevka"
+		:weight semi-light
+		:height 125)))))
 
 (use-package eglot
   :config
@@ -112,4 +124,15 @@
 
 ;; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Reload files changed outside emacs
+(global-auto-revert-mode 1)
+
+;; Org config
+(setq org-agenda-files
+      '("inbox.org" "nextActions.org" "projects.org"))
+
+(setq org-refile-targets
+      '((nil :maxlevel . 3)
+        (org-agenda-files :maxlevel . 3)))
 
