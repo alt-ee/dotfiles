@@ -82,6 +82,8 @@
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
-   '("<escape>" . ignore)))
+   '("<escape>" . ignore))
+  (meow-define-keys 'insert
+    '("C-g" . meow-insert-exit)))
 
 (provide 'meow-config)
