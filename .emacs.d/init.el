@@ -1,5 +1,8 @@
 ;; emacs config -*- lexical-binding: t; -*-
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
 (add-to-list 'load-path (concat user-emacs-directory
         (convert-standard-filename "lisp/")))
 
@@ -81,11 +84,6 @@
   :config
   (load-theme 'mindre t))
 
-(custom-set-faces
- '(default ((t (:family "Iosevka"
-		:weight semi-light
-		:height 125)))))
-
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
@@ -133,4 +131,3 @@
 (setq org-refile-targets
       '((nil :maxlevel . 3)
         (org-agenda-files :maxlevel . 3)))
-
