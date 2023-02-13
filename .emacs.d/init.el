@@ -1,8 +1,10 @@
 ;; emacs config -*- lexical-binding: t; -*-
 
+;; Stop customize from adding stuff to this file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+;; My custom lisp scripts
 (add-to-list 'load-path (concat user-emacs-directory
         (convert-standard-filename "lisp/")))
 
