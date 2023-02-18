@@ -82,10 +82,6 @@
 
 ;; TODO create a custom keybind to show balances
 
-(use-package mindre-theme
-  :config
-  (load-theme 'mindre t))
-
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
