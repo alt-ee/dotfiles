@@ -95,6 +95,15 @@
                :host github
                :repo "godotengine/emacs-gdscript-mode"))
 
+(use-package pyvenv)
+
+(use-package modus-themes
+  :config
+  (load-theme 'modus-vivendi))
+  
+(add-to-list 'default-frame-alist
+	     '(font . "Iosevka Comfy-11"))
+
 ;; Save recent files
 (recentf-mode 1)
 (setq recentf-max-saved-items 25)

@@ -3,7 +3,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(modus-vivendi))
  '(custom-safe-themes
-   '("f60404efc40b646a6a742d833c7097f9225550288565f945ec990d343c1a22ff" default))
+   '("dde643b0efb339c0de5645a2bc2e8b4176976d5298065b8e6ca45bc4ddf188b7" default))
  '(delete-selection-mode nil))
