@@ -65,11 +65,17 @@
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-file))
+
 (use-package corfu
   :init (global-corfu-mode)
   :config
   (setq corfu-cycle t
-	corfu-auto t)
+	corfu-auto t
+	corfu-auto-prefix 2
+	corfu-auto-delay 0.0)
   :bind (:map corfu-map
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
