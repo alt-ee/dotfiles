@@ -103,6 +103,12 @@
 
 (use-package pyvenv)
 
+(use-package tidal
+  :mode ("\\.tidal\\’" . tidal-mode)
+  :config (setq tidal-interpreter "/usr/bin/ghci"
+                haskell-process-type 'auto
+		tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
+
 (use-package modus-themes
   :config
   (load-theme 'modus-vivendi))
