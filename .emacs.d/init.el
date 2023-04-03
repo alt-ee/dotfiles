@@ -109,12 +109,21 @@
                 haskell-process-type 'auto
 		tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
 
-(use-package modus-themes
-  :config
-  (load-theme 'modus-vivendi))
-  
+;; Appearance
 (add-to-list 'default-frame-alist
 	     '(font . "Iosevka Comfy-11"))
+
+(use-package ef-themes
+  :config
+  (mapc #'disable-theme custom-enabled-themes)
+  (setq ef-themes-to-toggle '(ef-frost ef-night))
+  (ef-themes-select 'ef-night)
+  (global-unset-key (kbd "C-t"))
+  :bind
+  ("C-t t" . 'ef-themes-toggle)
+  ("C-t i" . text-scale-increase)
+  ("C-t d" . text-scale-decrease)
+  ("C-t r" . (lambda() (interactive) (text-scale-set 0)))))
 
 ;; Save recent files
 (recentf-mode 1)
