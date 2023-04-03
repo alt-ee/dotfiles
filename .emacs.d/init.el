@@ -135,6 +135,7 @@
 ;; Reduce screen clutter
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 
 ;; Reduce file clutter
 (setq auto-save-file-name-transforms
