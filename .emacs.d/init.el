@@ -120,11 +120,8 @@
   (ef-themes-select 'ef-night)
   (global-unset-key (kbd "C-t"))
   :bind
-  ("C-t t" . 'ef-themes-toggle)
-  ("C-t i" . text-scale-increase)
-  ("C-t d" . text-scale-decrease)
-  ("C-t r" . (lambda() (interactive) (text-scale-set 0)))))
-
+  ("C-t t" . 'ef-themes-toggle))
+  
 ;; Save recent files
 (recentf-mode 1)
 (setq recentf-max-saved-items 25)
