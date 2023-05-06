@@ -112,11 +112,11 @@
   :config
   (mapc #'disable-theme custom-enabled-themes)
   (setq ef-themes-to-toggle '(ef-frost ef-night))
-  (ef-themes-select 'ef-night)
+  (ef-themes-select 'ef-frost)
   (global-unset-key (kbd "C-t"))
   :bind
   ("C-t t" . 'ef-themes-toggle))
-  
+
 ;; Save recent files
 (recentf-mode 1)
 (setq recentf-max-saved-items 25)
