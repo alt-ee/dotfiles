@@ -75,23 +75,18 @@
   (setq corfu-cycle t
 	corfu-auto t
 	corfu-auto-prefix 2
-	corfu-auto-delay 0.0)
+	corfu-auto-delay 0.5)
   :bind (:map corfu-map
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
 
-(use-package beancount
-  :straight (:host github
-	   :repo "beancount/beancount-mode")
-  :config
-  (add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode)))
-
-;; TODO create a custom keybind to show balances
-
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
-  (add-hook 'python-mode-hook 'eglot-ensure))
+  (add-hook 'python-mode-hook 'eglot-ensure)
+  (add-to-list 'eglot-server-programs '(c++-mode "clangd"))
+  (add-hook 'c++-mode-hook 'eglot-ensure)
+  (add-hook 'gdscript-mode-hook 'eglot-ensure))
 
 (use-package magit)
 
