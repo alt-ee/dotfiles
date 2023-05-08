@@ -92,7 +92,8 @@
   (savehist-mode))
 
 (use-package consult
-  :bind (("C-x C-b" . consult-buffer)))
+  :bind (("C-x C-b" . consult-buffer)
+	 ("C-c y" . consult-yank-from-kill-ring)))
 
 (use-package marginalia
   :init
