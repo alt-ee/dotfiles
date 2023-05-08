@@ -105,8 +105,10 @@
 		tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
 
 ;; Appearance
-(add-to-list 'default-frame-alist
-	     '(font . "Iosevka Comfy-11"))
+(set-face-attribute 'default nil
+		    :family "Iosevka Comfy"
+		    :height 120
+		    :weight 'medium)
 
 (use-package ef-themes
   :config
