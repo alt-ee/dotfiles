@@ -85,7 +85,7 @@
   :straight (:type built-in)
   :config
   (add-to-list 'display-buffer-alist
-	       '("\\*eshell\\*"
+	       '("\*.*eshell\*"
 		 (display-buffer-in-side-window)
 		 (window-height . 10)
 		 (side . bottom)
