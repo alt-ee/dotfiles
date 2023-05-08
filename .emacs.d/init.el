@@ -81,6 +81,18 @@
 	  ("h" . dired-up-directory)
 	  ("l" . dired-find-file)))
 
+(use-package eshell
+  :straight (:type built-in)
+  :config
+  (add-to-list 'display-buffer-alist
+	       '("\\*eshell\\*"
+		 (display-buffer-in-side-window)
+		 (window-height . 10)
+		 (side . bottom)
+		 (slot . 0)))
+  :bind
+  ("C-c s" . eshell))
+
 ;;;;;;;;;;;;;;;
 ;; Completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
