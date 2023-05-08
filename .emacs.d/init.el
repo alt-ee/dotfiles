@@ -70,6 +70,17 @@
   (meow-setup)
   (meow-global-mode 1))
 
+(use-package dired
+  :straight (:type built-in)
+  :defer t
+  :config
+  (setq dired-kill-when-opening-new-dired-buffer t)
+  :bind* (
+	  ("C-x C-d" . dired)
+	  :map dired-mode-map
+	  ("h" . dired-up-directory)
+	  ("l" . dired-find-file)))
+
 ;;;;;;;;;;;;;;;
 ;; Completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
