@@ -93,6 +93,11 @@
   :bind
   ("C-c s" . eshell))
 
+(use-package re-builder
+  :straight (:type built-in)
+  :config
+  (setq reb-re-syntax 'string))
+
 ;;;;;;;;;;;;;;;
 ;; Completion
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
