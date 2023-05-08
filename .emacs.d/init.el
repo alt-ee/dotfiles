@@ -1,13 +1,5 @@
 ;; emacs config -*- lexical-binding: t; -*-
 
-;; Stop customize from adding stuff to this file
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
-
-;; My custom lisp scripts
-(add-to-list 'load-path (concat user-emacs-directory
-        (convert-standard-filename "lisp/")))
-
 ;; Install straight.el  
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -28,11 +20,59 @@
 (use-package straight
   :custom (straight-use-package-by-default t))
 
+;;;;;;;;;;;;;;;;;;;;;
+;; General Settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Stop customize from adding stuff to this file
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+;; My custom lisp scripts
+(add-to-list 'load-path (concat user-emacs-directory
+        (convert-standard-filename "lisp/")))
+
+;; Save recent files
+(recentf-mode 1)
+(setq recentf-max-saved-items 25)
+
+;; Comp warnings on startup are annoying
+(setq native-comp-async-report-warnings-errors 'silent)
+
+;; Reduce screen clutter
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+;; Reduce file clutter
+(setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/auto-save/" t)))
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups/")))))
+
+;; Shut up
+(setq-default ring-bell-function 'ignore)
+
+;; Start maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; Reload files changed outside emacs
+(global-auto-revert-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;; "Global" Packages
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package meow
   :config
   (require 'meow-config)
   (meow-setup)
   (meow-global-mode 1))
+
+;;;;;;;;;;;;;;;
+;; Completion
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package vertico
   :straight (:files (:defaults "extensions/*"))
@@ -80,6 +120,12 @@
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
 
+(use-package magit)
+
+;;;;;;;;;;;;
+;; LSP Etc.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
@@ -88,7 +134,6 @@
   (add-hook 'c++-mode-hook 'eglot-ensure)
   (add-hook 'gdscript-mode-hook 'eglot-ensure))
 
-(use-package magit)
 
 (use-package gdscript-mode
     :straight (gdscript-mode
@@ -104,48 +149,22 @@
                 haskell-process-type 'auto
 		tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
 
+;;;;;;;;;;;;;;;
 ;; Appearance
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (set-face-attribute 'default nil
 		    :family "Iosevka Comfy"
 		    :height 120
 		    :weight 'medium)
 
 (use-package ef-themes
-  :config
+  :config 
   (mapc #'disable-theme custom-enabled-themes)
   (setq ef-themes-to-toggle '(ef-frost ef-night))
   (ef-themes-select 'ef-frost)
-  (global-unset-key (kbd "C-t"))
-  :bind
-  ("C-t t" . 'ef-themes-toggle))
-
-;; Save recent files
-(recentf-mode 1)
-(setq recentf-max-saved-items 25)
-
-;; Comp warnings on startup are annoying
-(setq native-comp-async-report-warnings-errors 'silent)
-
-;; Reduce screen clutter
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-
-;; Reduce file clutter
-(setq auto-save-file-name-transforms
-      `((".*" "~/.emacs.d/auto-save/" t)))
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                 (concat user-emacs-directory "backups/")))))
-
-;; Shut up
-(setq-default ring-bell-function 'ignore)
-
-;; Start maximized
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-;; Reload files changed outside emacs
-(global-auto-revert-mode 1)
+  :bind* (
+	  ("C-t t" . 'ef-themes-toggle)))
 
 ;; Org config
 (setq org-agenda-files
