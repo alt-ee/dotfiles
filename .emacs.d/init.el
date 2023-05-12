@@ -76,7 +76,7 @@
   :config
   (setq dired-kill-when-opening-new-dired-buffer t)
   :bind* (
-	  ("C-x C-d" . dired)
+	  ("C-x C-d" . dired-jump)
 	  :map dired-mode-map
 	  ("h" . dired-up-directory)
 	  ("l" . dired-find-file)))
