@@ -73,7 +73,7 @@
    '("t" . meow-till)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
-   '("v" . meow-visit)
+   '("/" . meow-visit)
    '("w" . meow-mark-word)
    '("W" . meow-mark-symbol)
    '("x" . meow-line)
