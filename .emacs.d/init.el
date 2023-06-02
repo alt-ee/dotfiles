@@ -184,6 +184,10 @@
                 haskell-process-type 'auto
 		tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
 
+(use-package cc-mode
+  :config
+  (setq c-basic-offset 4))
+
 ;;;;;;;;;;;;;;;
 ;; Appearance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
