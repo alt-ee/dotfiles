@@ -144,7 +144,13 @@
   (setq corfu-cycle t
 	corfu-auto t
 	corfu-auto-prefix 2
-	corfu-auto-delay 0.5)
+	corfu-auto-delay 0.2)
+  (add-hook 'eshell-mode-hook
+	    (lambda ()
+	      (setq-local corfu-auto nil)
+	      (corfu-mode)))
+  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
+  (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
   :bind (:map corfu-map
 	      ("C-j" . corfu-next)
 	      ("C-k" . corfu-previous)))
