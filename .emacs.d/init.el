@@ -158,7 +158,7 @@
 (use-package magit)
 
 ;;;;;;;;;;;;
-;; LSP Etc.
+;; Coding
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package eglot
@@ -169,6 +169,9 @@
   (add-hook 'c++-mode-hook 'eglot-ensure)
   (add-hook 'gdscript-mode-hook 'eglot-ensure))
 
+(use-package smart-tabs-mode
+  :config
+  (smart-tabs-insinuate 'c++ 'c 'python))
 
 (use-package gdscript-mode
     :straight (gdscript-mode
@@ -186,7 +189,9 @@
 
 (use-package cc-mode
   :config
-  (setq c-basic-offset 4))
+  (add-hook 'c++-mode-hook 
+	    (setq c-default-style "linux"
+		  c-basic-offset 4)))
 
 ;;;;;;;;;;;;;;;
 ;; Appearance
