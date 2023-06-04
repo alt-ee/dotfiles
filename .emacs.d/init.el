@@ -169,6 +169,8 @@
   (add-hook 'c++-mode-hook 'eglot-ensure)
   (add-hook 'gdscript-mode-hook 'eglot-ensure))
 
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 (use-package smart-tabs-mode
   :config
   (smart-tabs-insinuate 'c++ 'c 'python))
