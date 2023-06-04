@@ -191,9 +191,8 @@
 
 (use-package cc-mode
   :config
-  (add-hook 'c++-mode-hook 
-	    (setq c-default-style "linux"
-		  c-basic-offset 4)))
+  (setq c-default-style "linux")
+  (setq-default c-basic-offset 4))
 
 ;;;;;;;;;;;;;;;
 ;; Appearance
