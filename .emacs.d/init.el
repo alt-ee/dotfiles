@@ -179,7 +179,7 @@
 
 (use-package smart-tabs-mode
   :config
-  (smart-tabs-insinuate 'c++ 'c 'python))
+  (smart-tabs-insinuate 'c++ 'c))
 
 (use-package gdscript-mode
   :straight
