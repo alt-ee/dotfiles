@@ -75,11 +75,11 @@
   :defer t
   :config
   (setq dired-kill-when-opening-new-dired-buffer t)
-  :bind* (
-	  ("C-x C-d" . dired-jump)
-	  :map dired-mode-map
-	  ("h" . dired-up-directory)
-	  ("l" . dired-find-file)))
+  :bind*
+  (("C-x C-d" . dired-jump)
+   :map dired-mode-map
+   ("h" . dired-up-directory)
+   ("l" . dired-find-file)))
 
 (use-package eshell
   :straight (:type built-in)
@@ -104,24 +104,28 @@
 
 (use-package vertico
   :straight (:files (:defaults "extensions/*"))
-  :init (vertico-mode)
-  :bind (:map vertico-map
-	      ("C-j" . vertico-next)
-	      ("C-k" . vertico-previous)))
+  :init
+  (vertico-mode)
+  :bind
+  (:map vertico-map
+	("C-j" . vertico-next)
+	("C-k" . vertico-previous)))
 			 
 (use-package vertico-directory
   :after vertico
   :straight nil
-  :bind (:map vertico-map
-	      ("M-h" . vertico-directory-delete-word)))
+  :bind
+  (:map vertico-map
+	("M-h" . vertico-directory-delete-word)))
 
 (use-package savehist
   :init
   (savehist-mode))
 
 (use-package consult
-  :bind (("C-x C-b" . consult-buffer)
-	 ("C-c y" . consult-yank-from-kill-ring)))
+  :bind
+  (("C-x C-b" . consult-buffer)
+   ("C-c y" . consult-yank-from-kill-ring)))
 
 (use-package marginalia
   :init
@@ -139,7 +143,8 @@
   (add-to-list 'completion-at-point-functions #'cape-file))
 
 (use-package corfu
-  :init (global-corfu-mode)
+  :init
+  (global-corfu-mode)
   :config
   (setq corfu-cycle t
 	corfu-auto t
@@ -151,9 +156,10 @@
 	      (corfu-mode)))
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
-  :bind (:map corfu-map
-	      ("C-j" . corfu-next)
-	      ("C-k" . corfu-previous)))
+  :bind
+  (:map corfu-map
+	("C-j" . corfu-next)
+	("C-k" . corfu-previous)))
 
 (use-package magit)
 
@@ -176,20 +182,23 @@
   (smart-tabs-insinuate 'c++ 'c 'python))
 
 (use-package gdscript-mode
-    :straight (gdscript-mode
-               :type git
-               :host github
-               :repo "godotengine/emacs-gdscript-mode"))
+  :straight
+  (gdscript-mode
+   :type git
+   :host github
+   :repo "godotengine/emacs-gdscript-mode"))
 
 (use-package pyvenv)
 
 (use-package tidal
   :mode ("\\.tidal\\’" . tidal-mode)
-  :config (setq tidal-interpreter "/usr/bin/ghci"
-                haskell-process-type 'auto
-		tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
+  :config
+  (setq tidal-interpreter "/usr/bin/ghci"
+        haskell-process-type 'auto
+	tidal-boot-script-path "~/.cabal/share/x86_64-linux-ghc-8.10.7/tidal-1.9.4/BootTidal.hs"))
 
 (use-package cc-mode
+  :straight (:type built-in)
   :config
   (setq c-default-style "linux")
   (setq-default c-basic-offset 4))
@@ -208,8 +217,8 @@
   (mapc #'disable-theme custom-enabled-themes)
   (setq ef-themes-to-toggle '(ef-frost ef-night))
   (ef-themes-select 'ef-frost)
-  :bind* (
-	  ("C-t t" . 'ef-themes-toggle)))
+  :bind*
+  (("C-t t" . 'ef-themes-toggle)))
 
 ;; Org config
 (setq org-agenda-files
