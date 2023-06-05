@@ -188,7 +188,11 @@
    :host github
    :repo "godotengine/emacs-gdscript-mode"))
 
-(use-package pyvenv)
+(use-package pyvenv
+  :config
+  ;; pyvenv.el wants to use the same python bin as virtualenvwrapper for env creation, but that doesn't
+  ;; work when virtualenvwraper has been installed with pipx, so just set it to global python.
+  (setq pyvenv-virtualenvwrapper-python "/usr/bin/python3"))
 
 (use-package tidal
   :mode ("\\.tidal\\’" . tidal-mode)
