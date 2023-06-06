@@ -68,7 +68,8 @@
   :config
   (require 'meow-config)
   (meow-setup)
-  (meow-global-mode 1))
+  (meow-global-mode 1)
+  (add-hook 'meow-insert-exit-hook 'corfu-quit))
 
 (use-package dired
   :straight (:type built-in)
