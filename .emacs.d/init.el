@@ -220,8 +220,8 @@
 (use-package ef-themes
   :config 
   (mapc #'disable-theme custom-enabled-themes)
-  (setq ef-themes-to-toggle '(ef-frost ef-night))
-  (ef-themes-select 'ef-frost)
+  (setq ef-themes-to-toggle '(ef-cyprus ef-autumn))
+  (ef-themes-select 'ef-autumn)
   :bind*
   (("C-t t" . 'ef-themes-toggle)))
 
