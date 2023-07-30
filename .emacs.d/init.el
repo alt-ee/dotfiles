@@ -232,3 +232,9 @@
 (setq org-refile-targets
       '((nil :maxlevel . 3)
         (org-agenda-files :maxlevel . 3)))
+
+(use-package dashboard
+  :ensure t
+  :config
+  
+  (dashboard-setup-startup-hook))
