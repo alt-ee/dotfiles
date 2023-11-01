@@ -8,3 +8,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [init]
 	defaultBranch = main
+[core]
+	excludesFile = /home/alex/.gitignore_global
