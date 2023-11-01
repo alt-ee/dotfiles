@@ -69,7 +69,9 @@
   (require 'meow-config)
   (meow-setup)
   (meow-global-mode 1)
-  (add-hook 'meow-insert-exit-hook 'corfu-quit))
+  (add-hook 'meow-insert-exit-hook 'corfu-quit)
+  (setq meow-expand-exclude-mode-list nil)
+  (setq meow-expand-hint-remove-delay 2.0))
 
 (use-package dired
   :straight (:type built-in)
@@ -85,6 +87,18 @@
 (use-package eshell
   :straight (:type built-in)
   :config
+  (defun eshell-here ()
+    (interactive)
+    (let* ((parent (if (buffer-file-name)
+		       (file-name-directory (buffer-file-name))
+		     default-directory))
+	   (name (car (last (split-string parent "/" t)))))
+      (eshell "new")
+      (rename-buffer (concat "*eshell: " name "*"))
+
+      (insert (concat "ls"))
+      (eshell-send-input)))
+  
   (add-to-list 'display-buffer-alist
 	       '("\*.*eshell\*"
 		 (display-buffer-in-side-window)
@@ -92,12 +106,16 @@
 		 (side . bottom)
 		 (slot . 0)))
   :bind
-  ("C-c s" . eshell))
+  ("C-!" . eshell-here))
 
 (use-package re-builder
   :straight (:type built-in)
   :config
   (setq reb-re-syntax 'string))
+
+(use-package envrc
+  :config
+  (envrc-global-mode))
 
 ;;;;;;;;;;;;;;;
 ;; Completion
@@ -141,11 +159,10 @@
 
 (use-package cape
   :init
-  (add-to-list 'completion-at-point-functions #'cape-file))
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster))
 
 (use-package corfu
-  :init
-  (global-corfu-mode)
   :config
   (setq corfu-cycle t
 	corfu-auto t
@@ -160,7 +177,9 @@
   :bind
   (:map corfu-map
 	("C-j" . corfu-next)
-	("C-k" . corfu-previous)))
+	("C-k" . corfu-previous))
+  :init
+  (global-corfu-mode))
 
 (use-package magit)
 
@@ -169,6 +188,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package eglot
+  :straight (:type built-in)
   :config
   (add-to-list 'eglot-server-programs '(python-mode "pylsp"))
   (add-hook 'python-mode-hook 'eglot-ensure)
@@ -189,12 +209,6 @@
    :host github
    :repo "godotengine/emacs-gdscript-mode"))
 
-(use-package pyvenv
-  :config
-  ;; pyvenv.el wants to use the same python bin as virtualenvwrapper for env creation, but that doesn't
-  ;; work when virtualenvwraper has been installed with pipx, so just set it to global python.
-  (setq pyvenv-virtualenvwrapper-python "/usr/bin/python3"))
-
 (use-package tidal
   :mode ("\\.tidal\\’" . tidal-mode)
   :config
@@ -207,6 +221,13 @@
   :config
   (setq c-default-style "linux")
   (setq-default c-basic-offset 4))
+
+(use-package compile
+  :straight (:type built-in)
+  :config
+  (defadvice compile (before ad-compile-smart activate)
+    "Advises 'compile' so it sets the argument COMINT to t."
+    (ad-set-arg 1 t)))
 
 ;;;;;;;;;;;;;;;
 ;; Appearance
@@ -236,5 +257,4 @@
 (use-package dashboard
   :ensure t
   :config
-  
   (dashboard-setup-startup-hook))
