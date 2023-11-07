@@ -234,15 +234,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (set-face-attribute 'default nil
-		    :family "Iosevka Comfy"
+		    :family "Iosevka"
 		    :height 120
 		    :weight 'medium)
 
 (use-package ef-themes
   :config 
   (mapc #'disable-theme custom-enabled-themes)
-  (setq ef-themes-to-toggle '(ef-cyprus ef-autumn))
-  (ef-themes-select 'ef-autumn)
+  (setq ef-themes-to-toggle '(ef-cyprus ef-bio))
+  (ef-themes-select 'ef-bio)
   :bind*
   (("C-t t" . 'ef-themes-toggle)))
 
