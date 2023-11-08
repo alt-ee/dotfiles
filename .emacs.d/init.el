@@ -229,13 +229,15 @@
     "Advises 'compile' so it sets the argument COMINT to t."
     (ad-set-arg 1 t)))
 
+(setq tab-width 4)
+
 ;;;;;;;;;;;;;;;
 ;; Appearance
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (set-face-attribute 'default nil
 		    :family "Iosevka"
-		    :height 120
+		    :height 110
 		    :weight 'medium)
 
 (use-package ef-themes
