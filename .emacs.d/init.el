@@ -260,3 +260,6 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook))
+
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
