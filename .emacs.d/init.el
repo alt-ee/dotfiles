@@ -246,7 +246,7 @@
 (set-face-attribute 'default nil
 		    :family "Iosevka"
 		    :height 110
-		    :weight 'medium)
+		    :weight 'light)
 
 (use-package ef-themes
   :config 
@@ -255,6 +255,10 @@
   (ef-themes-select 'ef-bio)
   :bind*
   (("C-t t" . 'ef-themes-toggle)))
+
+(use-package spacious-padding
+  :config
+  (spacious-padding-mode))
 
 ;; Org config
 (setq org-agenda-files
