@@ -168,10 +168,18 @@
 	corfu-auto t
 	corfu-auto-prefix 2
 	corfu-auto-delay 0.2)
-  (add-hook 'eshell-mode-hook
-	    (lambda ()
-	      (setq-local corfu-auto nil)
-	      (corfu-mode)))
+  (defun corfu-enable-in-eshell ()
+    (setq-local corfu-auto nil)
+    (corfu-mode))
+  (add-hook 'eshell-mode-hook #'corfu-enable-in-eshell)
+  (defun corfu-enable-in-minibuffer ()
+    "Enable Corfu in the minibuffer if `completion-at-point' is bound."
+    (when (where-is-internal #'completion-at-point (list (current-local-map)))
+      ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
+      (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
+                  corfu-popupinfo-delay nil)
+      (corfu-mode 1)))
+  (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-silent)
   (advice-add 'pcomplete-completions-at-point :around #'cape-wrap-purify)
   :bind
